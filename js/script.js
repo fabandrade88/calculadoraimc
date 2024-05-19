@@ -5,6 +5,11 @@ import { notNumber, IMC } from "./utils.js"
 const form = document.querySelector('form')
 const inputWeight = document.querySelector('#weight')
 const inputHeight = document.querySelector('#height')
+const inputListener = document.querySelector('input')
+
+inputListener.oninput = function(event) {
+  alertError.close()
+}
 
 form.onsubmit = function(event) {
   event.preventDefault()
@@ -17,7 +22,7 @@ form.onsubmit = function(event) {
     alertError.open()
     return;
   }
-
+  
   alertError.close()
 
   const result = IMC(weight, height)
@@ -29,4 +34,3 @@ function displayResultMessage(result) {
   Modal.message.innerText = message
   Modal.open()
 }
-
